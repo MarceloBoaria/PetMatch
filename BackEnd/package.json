@@ -1,11 +1,28 @@
 {
-  "name": "backend",
+  "name": "foodreview",
   "version": "1.0.0",
-  "description": "",
+  "description": "Aplicativo foodreview para avaliacao de restaurantes",
   "main": "server.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
-  "author": "",
-  "license": "ISC"
+  "keywords": [
+    "foodreview",
+    "reviews",
+    "restaurants"
+  ],
+  "author": "Sidney Vargas",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mysql2": "^3.2.3",
+    "nodemon": "^2.0.21",
+    "sequelize": "^6.31.0"
+  }
 }
