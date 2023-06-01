@@ -1,8 +1,8 @@
 import { Sequelize } from "sequelize";
 import connection from '../config/db.js';
 
-const Restaurant = connection.define(
-    'restaurant',
+const Dog = connection.define(
+    'dog',
     {
         id: {
             type: Sequelize.INTEGER,
@@ -10,23 +10,23 @@ const Restaurant = connection.define(
             allowNull: false,
             primaryKey: true
         },
-        name: {
+        breed: {
             type: Sequelize.STRING,
             allowNull: false
         },
-        type: {
+        size: {
             type: Sequelize.STRING,
             allowNull: false
         },
-        description: {
-            type: Sequelize.STRING,
+        vaccinated: {
+            type: Sequelize.BOOLEAN,
             allowNull: true
         },
-        adress: {
-            type: Sequelize.STRING,
+        castrated: {
+            type: Sequelize.BOOLEAN,
             allowNull: false
         }
     }
 )
 
-export default Restaurant;
+export default Dog;

@@ -1,5 +1,5 @@
-CREATE DATABASE foodreview;
+CREATE DATABASE petmatch;
 
-CREATE USER 'foodreview'@'localhost' IDENTIFIED BY 'foodreview';
+CREATE USER 'petmatch'@'localhost' IDENTIFIED BY 'petmatch';
 
-GRANT ALL PRIVILEGES ON foodreview.* TO 'foodreview'@'localhost';
+GRANT ALL PRIVILEGES ON petmatch.* TO 'petmatch'@'localhost';

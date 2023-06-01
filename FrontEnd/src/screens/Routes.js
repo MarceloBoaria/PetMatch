@@ -3,11 +3,11 @@ import React, { useContext } from 'react'
 import { Context } from '../context/dataContext'
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { Entypo } from '@expo/vector-icons'
+import { Entypo, FontAwesome5, AntDesign } from '@expo/vector-icons'
 
 import Home from './Home'
-import Restaurants from './Restaurants'
-import Reviews from './Reviews'
+import Dogs from './Dogs'
+import Matchs from './Matchs'
 
 const Tab = createBottomTabNavigator();
 
@@ -37,21 +37,21 @@ const Routes = ({navigation}) => {
         />
 
         <Tab.Screen
-            name='Restaurants'
-            component={Restaurants}
+            name='Dogs'
+            component={Dogs}
             options={{
                 tabBarIcon: () => (
-                    <Entypo name='bowl' size={30} />
+                    <FontAwesome5 name='dog' size={30} />
                 )
             }}
         />
         
         <Tab.Screen
-            name='Reviews'
-            component={Reviews}
+            name='Matchs'
+            component={Matchs}
             options={{
                 tabBarIcon: () => (
-                    <Entypo name='filgerprint' size={30} />
+                    <AntDesign name='like1' size={30} />
                 )
             }}
         />

@@ -1,7 +1,7 @@
 import connection from "./config/db.js";
 import User from "./models/User.js";
-import Restaurant from "./models/Restaurant.js";
-import Review from "./models/Review.js";
+import Dog from "./models/Dog.js";
+import Match from "./models/Match.js";
 
 const migrate = async () => {
     try {

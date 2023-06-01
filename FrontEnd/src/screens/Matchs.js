@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const Reviews = ({navigation}) => {
+const Matchs = ({navigation}) => {
   return (
     <View>
-      <Text>Reviews</Text>
+      <Text>Matchs</Text>
     </View>
   )
 }
 
-export default Reviews
+export default Matchs
 
 const styles = StyleSheet.create({})
