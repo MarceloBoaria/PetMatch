@@ -10,6 +10,10 @@ const Dog = connection.define(
             allowNull: false,
             primaryKey: true
         },
+        name: {
+            type: Sequelize.STRING,
+            allowNull: false
+        },
         breed: {
             type: Sequelize.STRING,
             allowNull: false
@@ -24,6 +28,10 @@ const Dog = connection.define(
         },
         castrated: {
             type: Sequelize.BOOLEAN,
+            allowNull: true
+        },
+        description: {
+            type: Sequelize.STRING,
             allowNull: false
         }
     }
