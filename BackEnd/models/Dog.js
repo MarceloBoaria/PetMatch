@@ -33,6 +33,14 @@ const Dog = connection.define(
         description: {
             type: Sequelize.STRING,
             allowNull: false
+        },
+        cidade: {
+            type: Sequelize.STRING,
+            allowNull: false
+        },
+        estado: {
+            type: Sequelize.STRING,
+            allowNull: false
         }
     }
 )

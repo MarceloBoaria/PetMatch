@@ -1,6 +1,6 @@
 import { StyleSheet, View, Image, useWindowDimensions } from "react-native";
 import React, { useState, useContext } from 'react';
-import Logo from '../../assets/images/logo.png';
+import Logo from '../../assets/images/logo-cao.png';
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
 import api from '../../api';
@@ -12,9 +12,11 @@ const RegisterDog = ({ navigation }) => {
     const { state, dispatch } = useContext(Context);
 
     const [name, setName] = useState('');
-    const [type, setType] = useState('');
+    const [breed, setBreed] = useState('');
+    const [size, setSize] = useState('');
     const [description, setDescription] = useState('');
-    const [address, setAddress] = useState('');
+    const [cidade, setCidade] = useState('');
+    const [estado, setEstado] = useState('');
 
     const { height } = useWindowDimensions();
 
@@ -22,16 +24,20 @@ const RegisterDog = ({ navigation }) => {
         try {
             const authData = await api.post("/dog/register", {
                 name: name,
-                type: type,
+                breed: breed,
+                size: size,
                 description: description,
-                address: address,
+                cidade: cidade,
+                estado: estado
             });
             if (authData.status === 200) {
                 alert(authData.data.message)
                 setName("")
-                setType("")
+                setBreed("")
+                setSize("")
                 setDescription("")
-                setAddress("")
+                setCidade("")
+                setEstado("")
                 dispatch({ type: "update", payload: true })
             }
             else {
@@ -58,20 +64,20 @@ const RegisterDog = ({ navigation }) => {
             />
 
             <Picker
-                selectedValue={type}
+                selectedValue={breed}
                 style={styles.picker}
-                onValueChange={setType}
+                onValueChange={setBreed}
             >
-                <Picker.Item label="FastFood" value="FastFood" />
-                <Picker.Item label="Japanese" value="Japanese" />
-                <Picker.Item label="Italian" value="Italian" />
-                <Picker.Item label="French" value="French" />
-                <Picker.Item label="Vegan" value="Vegan" />
-                <Picker.Item label="Brazilian" value="Brazilian" />
-                <Picker.Item label="Chinese" value="Chinese" />
-                <Picker.Item label="Barbecue" value="Barbecue" />
-                <Picker.Item label="Mexican" value="Mexican" />
-                <Picker.Item label="Hawaiian" value="Hawaiian" />
+                <Picker.Item label="Vira-Lata" value="Vira-Lata" />
+                <Picker.Item label="Pug" value="Pug" />
+                <Picker.Item label="Border-Collie" value="Border-Collie" />
+                <Picker.Item label="Pastor-Alemão" value="Pastor-Alemão" />
+                <Picker.Item label="Rottweiler" value="Rottweiler" />
+                <Picker.Item label="Shih-Tzu" value="Shih-Tzu" />
+                <Picker.Item label="Bulldog-Frânces" value="Bulldog-Frânces" />
+                <Picker.Item label="Golden-Retriever" value="Golden-Retriever" />
+                <Picker.Item label="Yorkshire-Terrier" value="Yorkshire-Terrier" />
+                <Picker.Item label="Poodle" value="Poodle" />
             </Picker>
 
             <CustomInput
@@ -81,9 +87,15 @@ const RegisterDog = ({ navigation }) => {
             />
 
             <CustomInput
-                placeholder="Address"
-                value={address}
-                setValue={setAddress}
+                placeholder="City"
+                value={cidade}
+                setValue={setCidade}
+            />
+
+            <CustomInput
+                placeholder="State"
+                value={estado}
+                setValue={setEstado}
             />
 
             <CustomButton text="Register" onPress={onRegisterPressed} />

@@ -1,14 +1,33 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { View, Text, StyleSheet, Button } from 'react-native'
+import React, { useContext, useState } from 'react'
+import { Context } from '../context/dataContext'
+import CustomButton from '../components/CustomButton';
 
-const Home = ({navigation}) => {
+const Home = ({ navigation }) => {
+
+  const { state, dispatch } = useContext(Context);
+
   return (
-    <View>
-      <Text>Home</Text>
+    <View style={styles.container}>
+      <Text style={styles.text}>Olá, {state.name}</Text>
+      <CustomButton text="Dogs" onPress={() => navigation.navigate("Dogs")} />
+      <CustomButton text="Matchs" onPress={() => navigation.navigate("Matchs")} />
+      <CustomButton text="Users" onPress={() => navigation.navigate("Users")} />
     </View>
   )
 }
 
-export default Home
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent:'space-around'
+    
+  },
+  text: {
+    fontSize: 30,
+    margin: 40
+  }
+})
 
-const styles = StyleSheet.create({})
+export default Home;

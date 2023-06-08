@@ -1,7 +1,7 @@
 import { StyleSheet, View, Image, useWindowDimensions } from "react-native";
 import React, { useContext, useState } from 'react';
 import api from '../../api';
-import Logo from '../../assets/images/logo.png';
+import Logo from '../../assets/images/logo-cao.png';
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
 import { Context } from "../../context/dataContext";

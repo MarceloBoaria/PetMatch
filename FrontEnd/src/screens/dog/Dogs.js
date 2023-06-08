@@ -44,9 +44,11 @@ const Dogs = ({ navigation }) => {
                         <View style={styles.container}>
                             <TouchableOpacity style={styles.text} onPress={() => seeMatch(item)}>
                                 <Text style={styles.title}>{item.name}</Text>
-                                <Text style={styles.item}>{item.type}</Text>
+                                <Text style={styles.item}>{item.breed}</Text>
+                                <Text style={styles.item}>{item.size}</Text>
                                 <Text style={styles.item}>{item.description}</Text>
-                                <Text style={styles.item}>{item.address}</Text>
+                                <Text style={styles.item}>{item.cidade}</Text>
+                                <Text style={styles.item}>{item.estado}</Text>
                             </TouchableOpacity>
                             <Entypo
                                 name="squared-plus"

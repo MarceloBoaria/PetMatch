@@ -1,63 +1,76 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Button } from 'react-native'
 import React, { useContext } from 'react'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { Entypo } from '@expo/vector-icons'
+
 import { Context } from '../context/dataContext'
 
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { Entypo, FontAwesome5, AntDesign } from '@expo/vector-icons'
-
 import Home from './Home'
-import Dogs from './Dogs'
-import Matchs from './Matchs'
+import DogRoutes from './dog/DogRoutes'
+import MatchRoutes from './match/MatchRoutes'
+import Users from './Users'
 
 const Tab = createBottomTabNavigator();
 
-const Routes = ({navigation}) => {
+const Routes = ({ navigation }) => {
     const { state, dispatch } = useContext(Context)
     return (
         <Tab.Navigator screenOptions={{
             headerRight: () => (
                 <Entypo
                     name='log-out'
-                    sizw={20}
+                    size={20}
                     style={{ margin: 10 }}
-                    color='#000'
-                    onPress={() => dispatch({type: 'logOut'})}
+                    onPress={() => dispatch({ type: 'logOut' })}
+                    color="#000"
                 />
             )
-        }}>
+        }} >
+            <Tab.Screen
+                name="Home"
+                component={Home}
+                options={{
+                    tabBarIcon: () => (
+                        <Entypo name='home' size={30} />
+                    ),
+                }}
+            />
+            <Tab.Screen
+                name="Dogs"
+                component={DogRoutes}
+                options={{
+                    tabBarIcon: () => (
+                        <Entypo name='bowl' size={30} />
+                    )
+                }}
+            />
+            <Tab.Screen
+                name="Matchs"
+                component={MatchRoutes}
+                options={{
+                    tabBarIcon: () => (
+                        <Entypo name='fingerprint' size={30} />
+                    )
+                }}
+            />
 
-        <Tab.Screen
-            name='Home'
-            component={Home}
-            options={{
-                tabBarIcon: () => (
-                    <Entypo name='home' size={30} />
-                )
-            }}
-        />
-
-        <Tab.Screen
-            name='Dogs'
-            component={Dogs}
-            options={{
-                tabBarIcon: () => (
-                    <FontAwesome5 name='dog' size={30} />
-                )
-            }}
-        />
-        
-        <Tab.Screen
-            name='Matchs'
-            component={Matchs}
-            options={{
-                tabBarIcon: () => (
-                    <AntDesign name='like1' size={30} />
-                )
-            }}
-        />
+            {state.isAdmin ? (
+                <Tab.Screen
+                    name="Users"
+                    component={Users}
+                    options={{
+                        tabBarIcon: () => (
+                            <Entypo name='user' size={30} />
+                        )
+                    }}
+                />
+            ) : (
+                <></>
+            )
+            }
 
         </Tab.Navigator>
-  )
+    )
 }
 
 export default Routes

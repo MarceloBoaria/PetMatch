@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import RegisterDog from './RegisterDog';
 import Dogs from './Dogs';
 import RegisterMatch from '../match/RegisterMatch';
-import RestaurantMatchs from '../match/RestaurantMatchs';
+import DogMatchs from '../match/DogMatchs';
 
 const Stack = createNativeStackNavigator();
 
