@@ -8,6 +8,7 @@ import DogMatchs from '../match/DogMatchs';
 const Stack = createNativeStackNavigator();
 
 const DogRoutes = ({ navigation }) => {
+    
     return (
             <Stack.Navigator screenOptions={{ headerShown: false }} >
                 <Stack.Screen name="MainDogs" component={Dogs} />

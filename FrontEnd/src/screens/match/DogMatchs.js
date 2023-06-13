@@ -13,7 +13,7 @@ const DogMatchs = ({ navigation }) => {
 
     useEffect(() => {
         const onScreenLoad = async () => {
-            const list = await api.get('/dog/findByDog', {
+            const list = await api.get('/match/findByDog', {
                 params: {
                     idDog: state.idDog,
                 },
@@ -41,7 +41,7 @@ const DogMatchs = ({ navigation }) => {
                                     halfStar={<Entypo name='star' style={[styles.myStarStyle]} />}
                                     emptyStar={<Entypo name='star-outlined' style={[styles.myEmptyStarStyle]} />}
                                 />
-                                <Text style={styles.item}>Adotado por: {item.user.name}</Text>
+                                <Text style={styles.item}>Avaliado por: {item.user.name}</Text>
                             </View>
                         </View>
                     )

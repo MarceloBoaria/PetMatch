@@ -12,7 +12,7 @@ const DogMatchs = ({ navigation }) => {
 
     useEffect(() => {
         const onScreenLoad = async () => {
-            const list = await api.get('/dog/findByUser', {
+            const list = await api.get('/match/findByUser', {
                 params: {
                     idUser: state.idUser,
                   }

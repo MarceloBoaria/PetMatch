@@ -41,6 +41,7 @@ const RegisterDog = ({ navigation }) => {
                 dispatch({ type: "update", payload: true })
             }
             else {
+
                 console.log(authData.data.message)
             }
         }
