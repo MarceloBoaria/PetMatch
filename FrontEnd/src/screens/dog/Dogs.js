@@ -32,11 +32,10 @@ const Dogs = ({ navigation }) => {
 
     return (
         <View style={styles.view}>
-            {state.isAdmin ? (
+
                 <CustomButton text="Novo Dog" onPress={() => navigation.navigate("RegisterDog")} />
-            ) : (
-                <></>
-            )}
+                <CustomButton text="Pesquisar Dog" onPress={() => navigation.navigate("PesquisarDog")} />
+
             <FlatList
                 data={dogs}
                 renderItem={({ item }) => {
@@ -64,7 +63,6 @@ const Dogs = ({ navigation }) => {
                 keyExtractor={(item) => item.id}
             />
         </View>
-
 
     )
 }

@@ -44,4 +44,21 @@ dog.get('/find', async (req, res) => {
     }
 })
 
+dog.post('/findAdvanced', async (req, res) => {
+
+    const { breed } = req.body;
+
+    const dogs = await Dog.findAll({where: {breed}}).catch(
+        (err) => {
+            console.log(err)
+        }
+    );
+
+    if (dogs){
+        return res.json({dogs})
+    } else {
+        return null
+    }
+})
+
 export default dog;
