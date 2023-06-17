@@ -7,7 +7,6 @@ import { Context } from '../context/dataContext'
 
 import Home from './Home'
 import DogRoutes from './dog/DogRoutes'
-import MatchRoutes from './match/MatchRoutes'
 import Users from './Users'
 
 const Tab = createBottomTabNavigator();
@@ -41,15 +40,6 @@ const Routes = ({ navigation }) => {
                 options={{
                     tabBarIcon: () => (
                         <Entypo name='bowl' size={30} />
-                    )
-                }}
-            />
-            <Tab.Screen
-                name="Matchs"
-                component={MatchRoutes}
-                options={{
-                    tabBarIcon: () => (
-                        <Entypo name='fingerprint' size={30} />
                     )
                 }}
             />

@@ -2,7 +2,7 @@ import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native
 import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../../context/dataContext';
 import api from '../../api';
-import { Entypo } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
 import CustomButton from '../../components/CustomButton';
 
 const Dogs = ({ navigation }) => {
@@ -20,20 +20,13 @@ const Dogs = ({ navigation }) => {
     }, [state.update]
     )
 
-    const seeMatch = async (item) => {
-        await dispatch({ type: 'setDog', payload: item });
-        navigation.navigate('DogMatchs');
-    }
-
-    const newMatch = async (item) => {
-        await dispatch({ type: 'setDog', payload: item });
-        navigation.navigate('RegisterMatch');
-    }
-
     return (
         <View style={styles.view}>
-
+            {state.isAdmin ? (
                 <CustomButton text="Novo Dog" onPress={() => navigation.navigate("RegisterDog")} />
+            ) : (
+                <></>
+            )}
                 <CustomButton text="Pesquisar Dog" onPress={() => navigation.navigate("PesquisarDog")} />
 
             <FlatList
@@ -49,8 +42,8 @@ const Dogs = ({ navigation }) => {
                                 <Text style={styles.item}>{item.cidade}</Text>
                                 <Text style={styles.item}>{item.estado}</Text>
                             </TouchableOpacity>
-                            <Entypo
-                                name="squared-plus"
+                            <FontAwesome5
+                                name="whatsapp"
                                 size={60}
                                 color="green"
                                 style={styles.icon}

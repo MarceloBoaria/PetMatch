@@ -10,9 +10,14 @@ const Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Olá, {state.name}</Text>
+
       <CustomButton text="Dogs" onPress={() => navigation.navigate("Dogs")} />
-      <CustomButton text="Matchs" onPress={() => navigation.navigate("Matchs")} />
+
+      {state.isAdmin ? (
       <CustomButton text="Users" onPress={() => navigation.navigate("Users")} />
+      ) : (
+        <></>
+      )}
     </View>
   )
 }

@@ -9,7 +9,7 @@ dog.get('/', (req, res) => {
 
 dog.post("/register", async (req, res) => {
     
-    const { name, breed, size, description, cidade, estado } = req.body;
+    const { name, breed, size, description, cidade, telefone } = req.body;
 
     const alreadyExistsDog = await Dog.findOne({ where: { name } }).catch(
         (err) => {
@@ -21,7 +21,7 @@ dog.post("/register", async (req, res) => {
         return res.status(409).json({ message: "Dog already registered!" });
     }
 
-    const newDog = new Dog({ name, breed, size, description, cidade, estado });
+    const newDog = new Dog({ name, breed, size, description, cidade, telefone });
     const savedDog = await newDog.save().catch((err) => {
         console.log("Error: ", err);
         res.status(500).json({ error: "Sorry! Could not register the dog" });

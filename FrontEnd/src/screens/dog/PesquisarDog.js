@@ -73,6 +73,7 @@ const PesquisarDog = ({ navigation }) => {
                                     size={60}
                                     color="green"
                                     style={styles.icon}
+                                    onPress={() => newMatch(item)}
                                 />
                         </View>
                     )

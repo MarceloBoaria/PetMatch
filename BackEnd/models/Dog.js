@@ -38,7 +38,7 @@ const Dog = connection.define(
             type: Sequelize.STRING,
             allowNull: false
         },
-        estado: {
+        telefone: {
             type: Sequelize.STRING,
             allowNull: false
         }

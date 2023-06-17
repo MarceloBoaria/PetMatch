@@ -16,7 +16,7 @@ const RegisterDog = ({ navigation }) => {
     const [size, setSize] = useState('');
     const [description, setDescription] = useState('');
     const [cidade, setCidade] = useState('');
-    const [estado, setEstado] = useState('');
+    const [telefone, setTelefone] = useState('');
 
     const { height } = useWindowDimensions();
 
@@ -28,7 +28,7 @@ const RegisterDog = ({ navigation }) => {
                 size: size,
                 description: description,
                 cidade: cidade,
-                estado: estado
+                telefone: telefone
             });
             if (authData.status === 200) {
                 alert(authData.data.message)
@@ -37,7 +37,7 @@ const RegisterDog = ({ navigation }) => {
                 setSize("")
                 setDescription("")
                 setCidade("")
-                setEstado("")
+                setTelefone("")
                 dispatch({ type: "update", payload: true })
             }
             else {
@@ -59,7 +59,7 @@ const RegisterDog = ({ navigation }) => {
             />
 
             <CustomInput
-                placeholder="Dog Name"
+                placeholder="Nome"
                 value={name}
                 setValue={setName}
             />
@@ -82,21 +82,21 @@ const RegisterDog = ({ navigation }) => {
             </Picker>
 
             <CustomInput
-                placeholder="Description"
+                placeholder="Descrição"
                 value={description}
                 setValue={setDescription}
             />
 
             <CustomInput
-                placeholder="City"
+                placeholder="Cidade"
                 value={cidade}
                 setValue={setCidade}
             />
 
             <CustomInput
-                placeholder="State"
-                value={estado}
-                setValue={setEstado}
+                placeholder="Telefone"
+                value={telefone}
+                setValue={setTelefone}
             />
 
             <CustomButton text="Register" onPress={onRegisterPressed} />
