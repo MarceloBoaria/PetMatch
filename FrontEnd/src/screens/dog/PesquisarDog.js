@@ -3,7 +3,7 @@ import React, { useState, useContext } from 'react';
 import CustomButton from "../../components/CustomButton";
 import api from '../../api';
 import { Picker } from '@react-native-picker/picker';
-import { FontAwesome5 } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
 
 const PesquisarDog = ({ navigation }) => {
 
@@ -20,8 +20,6 @@ const PesquisarDog = ({ navigation }) => {
             if (PesquisarDog.status === 200) {
                 console.log(PesquisarDog.data.dogs)
                 setTeste(PesquisarDog.data.dogs)
-
-                // dispatch({ type: "update", payload: true })
             }
             else {
 
@@ -68,13 +66,29 @@ const PesquisarDog = ({ navigation }) => {
                                 <Text style={styles.item}>{item.cidade}</Text>
                                 <Text style={styles.item}>{item.estado}</Text>
                             </View>
-                                <FontAwesome5
+                            <View style={styles.icones}>
+                                <FontAwesome
                                     name="whatsapp"
-                                    size={60}
+                                    size={40}
                                     color="green"
                                     style={styles.icon}
-                                    onPress={() => newMatch(item)}
+                                    onPress={() => openWhatsApp(item)}
                                 />
+                                <FontAwesome
+                                    name="edit"
+                                    size={40}
+                                    color="green"
+                                    style={styles.icon}
+                                    onPress={() => editarDog(item)}
+                                />
+                                <FontAwesome
+                                    name="trash-o"
+                                    size={40}
+                                    color="green"
+                                    style={styles.icon}
+                                    onPress={() => editarDog(item)}
+                                />
+                                </View>
                         </View>
                     )
                 }
@@ -106,8 +120,20 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         padding: 20
     },
+    title: {
+        fontSize: 40,
+        marginVertical: 10
+    },
+    item: {
+        fontSize: 20
+    },
+    icones: {
+        flexDirection: "column",
+        alignItems: "center"
+    },
     icon: {
-        margin: 0
+        margin: 0,
+        paddingVertical: 8
     },
     logo: {
         width: '70%',

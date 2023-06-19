@@ -39,6 +39,7 @@ const RegisterDog = ({ navigation }) => {
                 setCidade("")
                 setTelefone("")
                 dispatch({ type: "update", payload: true })
+                navigation.navigate("MainDogs")
             }
             else {
 

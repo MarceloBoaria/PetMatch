@@ -61,4 +61,21 @@ dog.post('/findAdvanced', async (req, res) => {
     }
 })
 
+dog.post('/edit', async (req, res) => {
+
+    const { id, name, breed, size, description, cidade, telefone } = req.body;
+
+    const dog = await Dog.update({ name, breed, size, description, cidade, telefone }, {
+        where: {
+          id: id
+        }
+      });
+
+    if (dog){
+        return res.json({dog})
+    } else {
+        return null
+    }
+})
+
 export default dog;

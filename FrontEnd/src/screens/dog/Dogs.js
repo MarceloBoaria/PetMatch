@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, Linking } from 'react-native';
 import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../../context/dataContext';
 import api from '../../api';
@@ -6,6 +6,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import CustomButton from '../../components/CustomButton';
 
 const Dogs = ({ navigation }) => {
+
     const { state, dispatch } = useContext(Context);
 
     const [dogs, setDogs] = useState({});
@@ -20,6 +21,18 @@ const Dogs = ({ navigation }) => {
     }, [state.update]
     )
 
+    const openWhatsApp = (item) => {
+        // Verifica se o aplicativo do WhatsApp está instalado no dispositivo
+        Linking.canOpenURL('whatsapp://send').then(supported => {
+            if (supported) {
+                // Abre o link para o WhatsApp
+                return Linking.openURL('http://wa.me/+55' + item.telefone);
+            } else {
+                console.log("O aplicativo do WhatsApp não está instalado");
+            }
+        }).catch(err => console.error('Erro ao verificar o WhatsApp:', err));
+    };
+
     return (
         <View style={styles.view}>
             {state.isAdmin ? (
@@ -27,14 +40,14 @@ const Dogs = ({ navigation }) => {
             ) : (
                 <></>
             )}
-                <CustomButton text="Pesquisar Dog" onPress={() => navigation.navigate("PesquisarDog")} />
+            <CustomButton text="Pesquisar Dog" onPress={() => navigation.navigate("PesquisarDog")} />
 
             <FlatList
                 data={dogs}
                 renderItem={({ item }) => {
                     return (
                         <View style={styles.container}>
-                            <TouchableOpacity style={styles.text} onPress={() => seeMatch(item)}>
+                            <TouchableOpacity style={styles.text}>
                                 <Text style={styles.title}>{item.name}</Text>
                                 <Text style={styles.item}>{item.breed}</Text>
                                 <Text style={styles.item}>{item.size}</Text>
@@ -47,8 +60,8 @@ const Dogs = ({ navigation }) => {
                                 size={60}
                                 color="green"
                                 style={styles.icon}
-                                onPress={() => newMatch(item)}
-                            />
+                                onPress={() => openWhatsApp(item)}
+                                />
                         </View>
                     )
                 }
