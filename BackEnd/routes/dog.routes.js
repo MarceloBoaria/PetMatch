@@ -18,16 +18,16 @@ dog.post("/register", async (req, res) => {
     );
 
     if (alreadyExistsDog) {
-        return res.status(409).json({ message: "Dog already registered!" });
+        return res.status(409).json({ message: "Dog já registrado!" });
     }
 
     const newDog = new Dog({ name, breed, size, description, cidade, telefone });
     const savedDog = await newDog.save().catch((err) => {
         console.log("Error: ", err);
-        res.status(500).json({ error: "Sorry! Could not register the dog" });
+        res.status(500).json({ error: "Desculpe! Não foi possível registrar o Dog" });
     });
 
-    if (savedDog) res.json({ message: "New Dog Registered!" });
+    if (savedDog) res.json({ message: "Novo Dog Registrado!" });
 });
 
 dog.get('/find', async (req, res) => {
