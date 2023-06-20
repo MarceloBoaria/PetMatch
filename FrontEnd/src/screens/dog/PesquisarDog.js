@@ -4,8 +4,12 @@ import CustomButton from "../../components/CustomButton";
 import api from '../../api';
 import { Picker } from '@react-native-picker/picker';
 import { FontAwesome } from '@expo/vector-icons';
+import { Context } from "../../context/dataContext";
+import { Linking } from "react-native";
 
 const PesquisarDog = ({ navigation }) => {
+
+    const { state, dispatch } = useContext(Context);
 
     const [breed, setBreed] = useState('');
     const [teste, setTeste] = useState([])
@@ -29,6 +33,28 @@ const PesquisarDog = ({ navigation }) => {
         catch (err) {
             console.log(err)
         }
+    }
+
+    const openWhatsApp = (item) => {
+        // Verifica se o aplicativo do WhatsApp está instalado no dispositivo
+        Linking.canOpenURL('whatsapp://send').then(supported => {
+            if (supported) {
+                // Abre o link para o WhatsApp
+                return Linking.openURL('http://wa.me/+55' + item.telefone);
+            } else {
+                console.log("O aplicativo do WhatsApp não está instalado");
+            }
+        }).catch(err => console.error('Erro ao verificar o WhatsApp:', err));
+    };
+
+    const editDog = async (item) => {
+        await dispatch({ type: "setDog", payload: item })
+        navigation.navigate('EditDog')
+    }
+
+    const deleteDog = async (item) => {
+        await dispatch({ type: "setDog", payload: item })
+        navigation.navigate('DeleteDog')
     }
 
     return (
@@ -79,14 +105,14 @@ const PesquisarDog = ({ navigation }) => {
                                     size={40}
                                     color="green"
                                     style={styles.icon}
-                                    onPress={() => editarDog(item)}
+                                    onPress={() => editDog(item)}
                                 />
                                 <FontAwesome
                                     name="trash-o"
                                     size={40}
                                     color="green"
                                     style={styles.icon}
-                                    onPress={() => editarDog(item)}
+                                    onPress={() => deleteDog(item)}
                                 />
                                 </View>
                         </View>

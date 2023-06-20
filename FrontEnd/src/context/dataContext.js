@@ -9,6 +9,10 @@ let initialState = {
     idUser: '',
     idDog: '',
     nameDog: '',
+    breedDog: '',
+    sizeDog: '',
+    descriptionDog: '',
+    cidadeDog: '',
     telefoneDog: '',
     update: false
 }
@@ -38,6 +42,10 @@ const reducer = (state, action) => {
                 ...state, 
                 idDog: action.payload.id,
                 nameDog: action.payload.name,
+                breedDog: action.payload.breed,
+                sizeDog: action.payload.size,
+                descriptionDog: action.payload.description,
+                cidadeDog: action.payload.cidade,
                 telefoneDog: action.payload.telefone
             }
         case "update":

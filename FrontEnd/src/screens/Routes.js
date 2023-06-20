@@ -44,21 +44,6 @@ const Routes = ({ navigation }) => {
                 }}
             />
 
-            {state.isAdmin ? (
-                <Tab.Screen
-                    name="Users"
-                    component={Users}
-                    options={{
-                        tabBarIcon: () => (
-                            <Entypo name='user' size={30} />
-                        )
-                    }}
-                />
-            ) : (
-                <></>
-            )
-            }
-
         </Tab.Navigator>
     )
 }

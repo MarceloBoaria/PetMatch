@@ -13,11 +13,6 @@ const Home = ({ navigation }) => {
 
       <CustomButton text="Dogs" onPress={() => navigation.navigate("Dogs")} />
 
-      {state.isAdmin ? (
-      <CustomButton text="Users" onPress={() => navigation.navigate("Users")} />
-      ) : (
-        <></>
-      )}
     </View>
   )
 }
