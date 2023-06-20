@@ -1,13 +1,14 @@
 import { StyleSheet, Button } from 'react-native'
 import React, { useContext } from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { Entypo } from '@expo/vector-icons'
+import { Entypo, FontAwesome } from '@expo/vector-icons'
 
 import { Context } from '../context/dataContext'
 
 import Home from './Home'
 import DogRoutes from './dog/DogRoutes'
 import Users from './Users'
+import PesquisarDog from './dog/PesquisarDog'
 
 const Tab = createBottomTabNavigator();
 
@@ -40,6 +41,16 @@ const Routes = ({ navigation }) => {
                 options={{
                     tabBarIcon: () => (
                         <Entypo name='bowl' size={30} />
+                    )
+                }}
+            />
+
+            <Tab.Screen
+                name="Search"
+                component={PesquisarDog}
+                options={{
+                    tabBarIcon: () => (
+                        <FontAwesome name='search' size={30} />
                     )
                 }}
             />

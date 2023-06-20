@@ -78,4 +78,21 @@ dog.post('/edit', async (req, res) => {
     }
 })
 
+dog.post('/delete', async (req, res) => {
+
+    const { id } = req.body;
+
+    const dog = await Dog.destroy({
+        where: {
+          id: id
+        }
+      });
+
+    if (dog){
+        return res.json({dog})
+    } else {
+        return null
+    }
+})
+
 export default dog;

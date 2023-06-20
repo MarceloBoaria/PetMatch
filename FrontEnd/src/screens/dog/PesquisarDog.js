@@ -9,10 +9,13 @@ import { Linking } from "react-native";
 
 const PesquisarDog = ({ navigation }) => {
 
+    
     const { state, dispatch } = useContext(Context);
 
     const [breed, setBreed] = useState('');
     const [teste, setTeste] = useState([])
+
+    
 
     const onSearchPressed = async () => {
 
@@ -53,8 +56,12 @@ const PesquisarDog = ({ navigation }) => {
     }
 
     const deleteDog = async (item) => {
-        await dispatch({ type: "setDog", payload: item })
-        navigation.navigate('DeleteDog')
+        // como fazer um poupup de confirmação, sim ou não!
+        await api.post('/dog/delete',{
+            id: item.id
+        })
+        dispatch({ type: "update", payload: true });
+        navigation.navigate('Home')
     }
 
     return (
