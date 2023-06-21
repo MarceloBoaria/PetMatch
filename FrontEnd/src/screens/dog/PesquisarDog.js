@@ -61,7 +61,8 @@ const PesquisarDog = ({ navigation }) => {
             id: item.id
         })
         dispatch({ type: "update", payload: true });
-        navigation.navigate('Home')
+        alert("Dog removido com sucesso!")
+        navigation.navigate('Dogs')
     }
 
     return (
