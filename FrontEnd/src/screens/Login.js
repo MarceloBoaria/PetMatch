@@ -1,6 +1,6 @@
 import { StyleSheet, TouchableOpacity, View, Image, useWindowDimensions, Text, TextInput } from "react-native";
 import React, { useState, useContext } from 'react';
-import Logo from '../assets/images/logo-cao.png';
+import Logo from '../assets/images/dog-logo.png';
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -35,6 +35,9 @@ const Login = ({ navigation }) => {
 
     return (
         <View style={styles.view}>
+
+            <Text style={styles.title}>Bem-vindo ao PetMatch</Text>
+
             <Image
                 source={Logo}
                 style={[styles.logo, { height: height * 0.3 }]}
@@ -54,7 +57,7 @@ const Login = ({ navigation }) => {
                 secureTextEntry={true}
             />
 
-            <CustomButton text="Login" onPress={onLoginPressed} />
+            <CustomButton text="Entrar" onPress={onLoginPressed} />
 
             <TouchableOpacity
                 onPress={() => navigation.navigate("RegisterUser")}
@@ -75,9 +78,11 @@ const styles = StyleSheet.create({
     view: {
         alignItems: 'center',
         padding: 20,
+        flex: 1,
+        backgroundColor: "#f5d1b2"
     },
     logo: {
-        width: '70%',
+        width: '100%',
         maxWidth: 300,
         maxHeight: 200,
     },
@@ -85,6 +90,12 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         color: "#6200ee",
     },
+    title: {
+        fontWeight: "bold",
+        fontSize: "2rem",
+        width: "100%",
+        textAlign: "center"
+    }
 });
 
 export default Login;

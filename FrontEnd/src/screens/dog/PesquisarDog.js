@@ -61,8 +61,8 @@ const PesquisarDog = ({ navigation }) => {
             id: item.id
         })
         dispatch({ type: "update", payload: true });
-        alert("Dog removido com sucesso!")
-        navigation.navigate('Dogs')
+        alert('Dog deletado com sucesso!')
+        navigation.navigate('Home')
     }
 
     return (
@@ -93,12 +93,10 @@ const PesquisarDog = ({ navigation }) => {
                     return (
                         <View style={styles.container}>
                             <View style={styles.text}>
-                                <Text style={styles.title}>{item.name}</Text>
-                                <Text style={styles.item}>{item.breed}</Text>
-                                <Text style={styles.item}>{item.size}</Text>
-                                <Text style={styles.item}>{item.description}</Text>
-                                <Text style={styles.item}>{item.cidade}</Text>
-                                <Text style={styles.item}>{item.estado}</Text>
+                                <Text style={styles.item}><Text style={styles.negrito}>Nome:</Text> {item.name}</Text>
+                                <Text style={styles.item}><Text style={styles.negrito}>Raça:</Text> {item.breed}</Text>
+                                <Text style={styles.item}><Text style={styles.negrito}>Descrição:</Text> {item.description}</Text>
+                                <Text style={styles.item}><Text style={styles.negrito}>Cidade:</Text> {item.cidade}</Text>
                             </View>
                             <View style={styles.icones}>
                                 <FontAwesome
@@ -108,21 +106,33 @@ const PesquisarDog = ({ navigation }) => {
                                     style={styles.icon}
                                     onPress={() => openWhatsApp(item)}
                                 />
-                                <FontAwesome
-                                    name="edit"
-                                    size={40}
-                                    color="green"
-                                    style={styles.icon}
-                                    onPress={() => editDog(item)}
-                                />
-                                <FontAwesome
-                                    name="trash-o"
-                                    size={40}
-                                    color="green"
-                                    style={styles.icon}
-                                    onPress={() => deleteDog(item)}
-                                />
-                                </View>
+                            </View>
+                            <View style={styles.icones}>
+                                {state.isAdmin ? (
+                                    <FontAwesome
+                                        name="edit"
+                                        size={40}
+                                        color="green"
+                                        style={styles.icon}
+                                        onPress={() => editDog(item)}
+                                    />
+                                ) : (
+                                    <></>
+                                )}
+                            </View>
+                            <View style={styles.icones}>
+                                {state.isAdmin ? (
+                                    <FontAwesome
+                                        name="trash-o"
+                                        size={40}
+                                        color="green"
+                                        style={styles.icon}
+                                        onPress={() => deleteDog(item)}
+                                    />
+                                ) : (
+                                    <></>
+                                )}
+                            </View>
                         </View>
                     )
                 }
@@ -149,8 +159,8 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     text: {
-        height: 120,
-        width: '80%',
+        height: 170,
+        width: '60%',
         justifyContent: "center",
         padding: 20
     },
@@ -163,11 +173,15 @@ const styles = StyleSheet.create({
     },
     icones: {
         flexDirection: "column",
-        alignItems: "center"
+        alignItems: "center",
+        margin: '10px'
+    },
+    negrito: {
+        fontWeight: "bold"
     },
     icon: {
         margin: 0,
-        paddingVertical: 8
+        // paddingVertical: 8
     },
     logo: {
         width: '70%',

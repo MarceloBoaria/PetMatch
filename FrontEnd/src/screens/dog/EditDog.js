@@ -1,6 +1,6 @@
 import { StyleSheet, View, Image, useWindowDimensions } from "react-native";
 import React, { useState, useContext } from 'react';
-import Logo from '../../assets/images/logo-cao.png';
+import EditPaw from '../../assets/images/dog-edit.png';
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
 import api from '../../api';
@@ -55,7 +55,7 @@ const EditDog = ({ navigation }) => {
     return (
         <View style={styles.view}>
             <Image
-                source={Logo}
+                source={EditPaw}
                 style={[styles.logo, { height: height * 0.3 }]}
                 resizeMode="contain"
             />
@@ -110,6 +110,7 @@ const styles = StyleSheet.create({
     view: {
         alignItems: 'center',
         padding: 20,
+        backgroundColor: "#c2deff"
     },
     logo: {
         width: '70%',
@@ -123,12 +124,12 @@ const styles = StyleSheet.create({
     picker: {
         marginVertical: 5,
         borderRadius: 5,
-        backgroundColor: 'lightgray',
+        borderWidth: 1,
+        borderColor: '#000000',
         textAlignVertical: 'center',
         textAlign: 'center',
         fontSize: '14px',
         fontWeight: 'bold',
-        borderWidth: 0,
         height: 45,
         width: '100%'
     }

@@ -2,7 +2,7 @@ import {
     StyleSheet, Text, View, Image, useWindowDimensions, TouchableOpacity
 } from "react-native";
 import React, { useState } from 'react';
-import Logo from '../assets/images/logo-cao.png';
+import Pata from '../assets/images/pata.png';
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
 import api from "../api";
@@ -39,8 +39,9 @@ const RegisterUser = ({ navigation }) => {
 
     return (
         <View style={styles.view}>
+            <Text style={styles.title}>Você está a um passo de conhecer seu próximo Aumigo!</Text>
             <Image
-                source={Logo}
+                source={Pata}
                 style={[styles.logo, { height: height * 0.3 }]}
                 resizeMode="contain"
             />
@@ -65,7 +66,7 @@ const RegisterUser = ({ navigation }) => {
                 value={admin}
                 setValue={setAdmin}
             />
-            <CustomButton text="Register" onPress={onRegisterPressed} />
+            <CustomButton text="Cadastrar" onPress={onRegisterPressed} />
             <TouchableOpacity
                 onPress={() => navigation.navigate("Login")}
             >
@@ -83,6 +84,8 @@ const styles = StyleSheet.create({
     view: {
         alignItems: 'center',
         padding: 20,
+        flex: 1,
+        backgroundColor: "#f5d1b2"
     },
 
     logo: {
@@ -95,7 +98,12 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         color: "#6200ee",
     },
-
+    title: {
+        fontWeight: "bold",
+        fontSize: "1.4rem",
+        width: "100%",
+        textAlign: "center"
+    }
 });
 
 export default RegisterUser;

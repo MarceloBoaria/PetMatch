@@ -36,7 +36,7 @@ const Dogs = ({ navigation }) => {
     return (
         <View style={styles.view}>
             {state.isAdmin ? (
-                <CustomButton text="Novo Dog" onPress={() => navigation.navigate("RegisterDog")} />
+                <CustomButton text="Cadastrar Dog" onPress={() => navigation.navigate("RegisterDog")} />
             ) : (
                 <></>
             )}
@@ -48,12 +48,10 @@ const Dogs = ({ navigation }) => {
                     return (
                         <View style={styles.container}>
                             <TouchableOpacity style={styles.text}>
-                                <Text style={styles.title}>{item.name}</Text>
-                                <Text style={styles.item}>{item.breed}</Text>
-                                <Text style={styles.item}>{item.size}</Text>
-                                <Text style={styles.item}>{item.description}</Text>
-                                <Text style={styles.item}>{item.cidade}</Text>
-                                <Text style={styles.item}>{item.estado}</Text>
+                                <Text style={styles.item}><Text style={styles.negrito}>Nome:</Text> {item.name}</Text>
+                                <Text style={styles.item}><Text style={styles.negrito}>Raça:</Text> {item.breed}</Text>
+                                <Text style={styles.item}><Text style={styles.negrito}>Descrição (porte, castração, vacinação):</Text> {item.description}</Text>
+                                <Text style={styles.item}><Text style={styles.negrito}>Cidade:</Text> {item.cidade}</Text>
                             </TouchableOpacity>
                             <FontAwesome5
                                 name="whatsapp"
@@ -61,7 +59,7 @@ const Dogs = ({ navigation }) => {
                                 color="green"
                                 style={styles.icon}
                                 onPress={() => openWhatsApp(item)}
-                                />
+                            />
                         </View>
                     )
                 }
@@ -90,18 +88,24 @@ const styles = StyleSheet.create({
         padding: 10,
         borderRadius: 10,
         backgroundColor: 'lightblue',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     text: {
         height: 120,
         width: '80%',
         justifyContent: "center",
+        gap: "0.2rem",
+        padding: "1rem",
+
     },
     title: {
         fontSize: 30
     },
     item: {
         fontSize: 15
+    },
+    negrito: {
+        fontWeight: "bold"
     },
     icon: {
         margin: 0

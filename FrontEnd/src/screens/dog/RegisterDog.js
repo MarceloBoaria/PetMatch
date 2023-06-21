@@ -1,6 +1,6 @@
 import { StyleSheet, View, Image, useWindowDimensions } from "react-native";
 import React, { useState, useContext } from 'react';
-import Logo from '../../assets/images/logo-cao.png';
+import DogAdd from '../../assets/images/dog-add.png';
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
 import api from '../../api';
@@ -54,7 +54,7 @@ const RegisterDog = ({ navigation }) => {
     return (
         <View style={styles.view}>
             <Image
-                source={Logo}
+                source={DogAdd}
                 style={[styles.logo, { height: height * 0.3 }]}
                 resizeMode="contain"
             />
@@ -83,7 +83,7 @@ const RegisterDog = ({ navigation }) => {
             </Picker>
 
             <CustomInput
-                placeholder="Descrição"
+                placeholder="Descrição (Porte, Vacinação, Castração)"
                 value={description}
                 setValue={setDescription}
             />
@@ -109,11 +109,12 @@ const styles = StyleSheet.create({
     view: {
         alignItems: 'center',
         padding: 20,
+        backgroundColor: "#c2deff"
     },
     logo: {
-        width: '70%',
-        maxWidth: 300,
-        maxHeight: 200,
+        width: '40%',
+        maxWidth: 100,
+        maxHeight: 170,
     },
     loginText: {
         fontWeight: "bold",
@@ -121,13 +122,13 @@ const styles = StyleSheet.create({
     },
     picker: {
         marginVertical: 5,
+        borderWidth: 1,
+        borderColor: '#000000',
         borderRadius: 5,
-        backgroundColor: 'lightgray',
         textAlignVertical: 'center',
         textAlign: 'center',
         fontSize: '14px',
         fontWeight: 'bold',
-        borderWidth: 0,
         height: 45,
         width: '100%'
     }
